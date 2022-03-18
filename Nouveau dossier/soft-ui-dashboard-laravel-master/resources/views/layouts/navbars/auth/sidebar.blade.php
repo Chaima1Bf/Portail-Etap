@@ -41,7 +41,7 @@
             </li>
 
             <li class="nav-item mt-2">
-                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Laravel Examples</h6>
+                
             </li>
             <li class="nav-item">
                 <a class="nav-link {{ Route::currentRouteName() == 'user-profile' ? 'active' : '' }}"
@@ -124,7 +124,7 @@
                         <i style="font-size: 1rem;" class="fas fa-lg fa-list-ul ps-2 pe-2 text-center
                         {{ in_array(request()->route()->getName(),['user-management']) ? 'text-white' : 'text-dark' }}"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Absences</span>
+                    <span class="nav-link-text ms-1">Peronals</span>
                 </a>
             </li>
 

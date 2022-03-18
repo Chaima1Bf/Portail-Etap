@@ -18,6 +18,7 @@ use App\Http\Livewire\LaravelExamples\UserProfile;
 use App\Http\Livewire\LaravelExamples\UserManagement;
 
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PersonnelController;
 
 use Illuminate\Http\Request;
 
@@ -54,12 +55,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/laravel-user-management', UserManagement::class)->name('user-management');
 });
 
+Route::resource('/personnels','PersonnelController');
+Route::get('/',function(){
+    return view ('layouts.laravel-user-management');
+});
 // ----------------------------- contacts -----------------------------
-/*
-Route::get('allcontacts/page', [App\Http\Controllers\ContactController::class, 'allcontacts'])->middleware('auth')->name('allcontacts/page');
-Route::get('addcontact/page', [App\Http\Controllers\ContactController::class, 'addContact'])->middleware('auth')->name('addcontact/page');
-Route::get('contact/edit/{PERS_MAT_95}', [App\Http\Controllers\ContactController::class, 'editContact']);
-Route::post('contact/save', [App\Http\Controllers\ContactController::class, 'saveRecordContact'])->middleware('auth')->name('contact/save');
-Route::post('contact/delete', [App\Http\Controllers\ContactController::class, 'deleteRecord'])->middleware('auth')->name('contact/delete');
-Route::post('contact/update', [App\Http\Controllers\ContactController::class, 'updateRecord'])->middleware('auth')->name('contact/update');
-*/
+
+//Route::get('allcontacts/page', [App\Http\Controllers\ContactController::class, 'allcontacts'])->middleware('auth')->name('allcontacts/page');
+//Route::get('addcontact/page', [App\Http\Controllers\ContactController::class, 'addContact'])->middleware('auth')->name('addcontact/page');
+//Route::get('contact/edit/{PERS_MAT_95}', [App\Http\Controllers\ContactController::class, 'editContact']);
+//Route::post('contact/save', [App\Http\Controllers\ContactController::class, 'saveRecordContact'])->middleware('auth')->name('contact/save');
+//Route::post('contact/delete', [App\Http\Controllers\ContactController::class, 'deleteRecord'])->middleware('auth')->name('contact/delete');
+//Route::post('contact/update', [App\Http\Controllers\ContactController::class, 'updateRecord'])->middleware('auth')->name('contact/update');

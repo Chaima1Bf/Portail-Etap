@@ -21,5 +21,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@softui.com',
             'password' => Hash::make('secret')
         ]);
+        $this->call(NAT_ABSSeeder::class);
+        $this->call(Nature_CongeSeeder::class);
+        $this->call(TYP_FONCTIONSeeder::class);
     }
 }

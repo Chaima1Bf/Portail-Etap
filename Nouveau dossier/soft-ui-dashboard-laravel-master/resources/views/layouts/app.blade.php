@@ -40,7 +40,7 @@
     @guest
         {{-- If the user is on the login page --}}
         @if (!auth()->check() && in_array(request()->route()->getName(),['login'],))
-            @include('layouts.navbars.guest.login')
+
             {{ $slot }}
             <div class="mt-5">
                 @include('layouts.footers.guest.with-socials')
@@ -49,7 +49,7 @@
             {{-- If the user is on the sign up page --}}
         @elseif (!auth()->check() && in_array(request()->route()->getName(),['sign-up'],))
             <div>
-                @include('layouts.navbars.guest.sign-up')
+
                 {{ $slot }}
                 @include('layouts.footers.guest.with-socials')
             </div>
