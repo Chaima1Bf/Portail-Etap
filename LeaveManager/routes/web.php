@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AbsenceController;
+use App\Http\Controllers\DashboardController;
 
 
 /**
@@ -12,9 +13,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('leaves', App\Http\Controllers\LeaveController::class);
     Route::redirect('/', route('leaves.index'));
 
-    Route::get('/dash', function () {
-        return view('layouts.dashboard');
-    });
+    Route::get('/dash', [App\Http\Controllers\DashboardController::class, 'index']);
+
 
     Route::get('absence', [AbsenceController::class, 'show']);
 });

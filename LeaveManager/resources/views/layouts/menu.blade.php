@@ -1,10 +1,11 @@
 <li class="side-menus">
-    <a class="nav-link" href=""><i class="fas fa-building"></i><span>Dashboard</span></a>
+    <a class="nav-link" href="{{ route('users.index') }}"><i class="fas fa-building"></i><span>Dashboard</span></a>
 </li>
 
 <li class="side-menus">
     <a class="nav-link" href=""><i class="fas fa-building"></i><span>Pointage</span></a>
 </li>
+
 
 <li class="side-menus {{ Request::is('leaves*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('leaves.index') }}"><i class="fas fa-building"></i><span>Congés</span></a>

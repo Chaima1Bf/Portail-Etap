@@ -26,6 +26,7 @@
             <div class="card-body p-0">
                 <div class="table-responsive">
                     <table class="table table-striped">
+                        @if (Auth::user()->is_admin == 1) 
                         <thead>
                             <tr>
                                 <th>Matricule</th>
@@ -52,6 +53,7 @@
 
                         </tbody>
                     </table>
+                    @endif
                     <div class="card-footer text-right">
                         <nav class="d-inline-block">
                           <ul class="pagination mb-0">
