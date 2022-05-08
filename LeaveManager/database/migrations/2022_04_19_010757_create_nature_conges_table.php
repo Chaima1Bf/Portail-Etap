@@ -14,7 +14,8 @@ class CreateNatureCongesTable extends Migration
     public function up()
     {
         Schema::create('nature_conges', function (Blueprint $table) {
-            $table->Increments('CODE');
+            $table->id();
+            $table->integer('CODE');
             $table->enum('NOM',['Annuel', 'Exceptionnel', 'Recuperation']);
             $table->enum('DESCRIPTION',['Conge Annuel', 'Conge Exceptionnel', 'Conge Recuperation'] );
             $table->timestamps();

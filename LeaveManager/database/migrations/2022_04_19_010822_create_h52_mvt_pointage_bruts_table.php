@@ -14,23 +14,24 @@ class CreateH52MvtPointageBrutsTable extends Migration
     public function up()
     {
         Schema::create('h52_mvt_pointage_bruts', function (Blueprint $table) {
-            $table->string("Matricule",10);
+            $table->id();
+            $table->string("Matricule");
             $table->date("JourCptPnt");
             $table->date("DateTimePnt");
             $table->tinyInteger("OriginePnt");
-            $table->string("PntSourceID",15);
-            $table->string("ValiderPar",10);
-            $table->string("TypeJour",3);
+            $table->string("PntSourceID");
+            $table->string("ValiderPar");
+            $table->string("TypeJour");
             $table->tinyInteger("TypeOperation");
             $table->binary("OnPntAnnule");
-            $table->integer("AnnulePar",10);
-            $table->string("PntCreerPar",10);
+            $table->integer("AnnulePar");
+            $table->string("PntCreerPar");
             $table->date("DateCreation");
             $table->tinyInteger("MotifPntManuelH511");
             $table->tinyInteger("Etat");
             $table->integer("OnCloture");
             $table->binary("DateCloture");
-            $table->string("CloturePar",10);
+            $table->string("CloturePar");
             $table->timestamps();
         });
     }

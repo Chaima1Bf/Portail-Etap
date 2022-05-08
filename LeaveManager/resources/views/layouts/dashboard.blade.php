@@ -25,7 +25,7 @@
           <div class="row align-items-center">
 
             <div class="col-5 col-sm-7 col-xl-8 p-4">
-              <h4 class="mb-1 mb-sm-0">Bienvenu dans ton dashboard</h4>
+              <h4 class="mb-1 mb-sm-0">Bienvenu dans ton dashboard, {{Auth::user()->name}} </h4>
               <p class="mb-0 font-weight-normal d-none d-sm-block" style="font-size: 17px">vérifier les nouveautés depuis votre dernière visite.</p>
             </div>
             <div class="col-4 col-sm-3 col-xl-2">
@@ -58,10 +58,10 @@
           </div>
           <div class="card-wrap">
             <div class="card-header">
-              <h4>News</h4>
+              <h4>Absences</h4>
             </div>
             <div class="card-body">
-              42
+              {{$absence}}
             </div>
           </div>
         </div>

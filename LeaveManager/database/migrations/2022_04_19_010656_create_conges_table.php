@@ -14,7 +14,8 @@ class CreateCongesTable extends Migration
     public function up()
     {
         Schema::create('conges', function (Blueprint $table) {
-            $table->integer('CONG_MAT_95')->primary();
+            $table->id();
+            $table->integer('CONG_MAT_95');
             $table->integer('CONG_NUMORD_93');
             $table->integer('CONG_NAT_9');
             $table->string('CONG_MOTIF_X40',40);
@@ -30,6 +31,8 @@ class CreateCongesTable extends Migration
             $table->string('CONG_ADRES_X30',65);
             $table->string('CONG_TEL_98',8);
             $table->string('CONG_DEMI_PER',8);
+            $table->foreignId('user_id')->constrained()->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

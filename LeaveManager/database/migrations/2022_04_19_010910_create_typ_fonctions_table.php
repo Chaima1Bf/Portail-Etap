@@ -14,7 +14,8 @@ class CreateTypFonctionsTable extends Migration
     public function up()
     {
         Schema::create('typ_fonctions', function (Blueprint $table) {
-            $table->integer('CODE_TYPE')->primary();
+            $table->id();
+            $table->integer('CODE_TYPE');
             $table->string('LIB_TYPE',100);
             $table->integer('MONTANT');
             $table->string('CODF_CNRPS');

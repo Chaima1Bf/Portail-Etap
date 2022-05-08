@@ -16,14 +16,15 @@ class CreateLeavesTable extends Migration
     {
         Schema::create('leaves', function (Blueprint $table) {
             $table->id();
-            $table->enum('type', ['Annuel','Exceptionnel','Recuperation']);
+            $table->enum('type', ['Annuel','Exceptionnel','Recuperation'])->default('Annuel');
             $table->date('start_date');
             $table->date('end_date');
             $table->string('reason');
             $table->enum('status', ['Traitement', 'Acceptée', 'Refusée'])->default('Traitement');
             $table->string('emergency_phone')->nullable();
             $table->string('emergency_email')->nullable();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained()->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -14,7 +14,8 @@ class CreateNatAbsTable extends Migration
     public function up()
     {
         Schema::create('nat_abs', function (Blueprint $table) {
-            $table->integer("CODE_ABS")->primary();
+            $table->id();
+            $table->integer("CODE_ABS");
             $table->enum("LIBELLE_ABS",[
                 'FIN DETACHEMENT',
                 'RADIER',

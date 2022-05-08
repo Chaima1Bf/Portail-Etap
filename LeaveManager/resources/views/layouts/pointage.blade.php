@@ -39,17 +39,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($absences as $absence)
+                            
                             <tr>
-                                <td>{{$absence['ABS_MAT_95']}}</td>
-                                <td>{{$absence['ABS_MAT_95']}}</td>
-                                <td>{{$absence['ABS_NBRJOUR_93']}}</td>
-                                <td>{{$absence['ABS_DATE_DEB']}}</td>
-                                <td>{{$absence['ABS_PERDEB_X']}}</td>
-                                <td>{{$absence['ABS_DATE_FIN']}}</td>
-                                <td>{{$absence['ABS_PERFIN_X']}}</td>
+
                             </tr>
-                            @endforeach
+                            
 
                         </tbody>
                     </table>

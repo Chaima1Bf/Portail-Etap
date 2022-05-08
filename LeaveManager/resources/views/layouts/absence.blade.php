@@ -13,20 +13,21 @@
             <div class="card-header">
                 <h4>Liste des Abscences</h4>
                 <div class="card-header-form">
-                <form>
+                    @if (Auth::user()->is_admin)
+                <form method="GET" action="{{ route('absence.search') }}">
                     <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search">
+                    <input type="text" name="query" id="query" value="{{ request()->get('query') ? request()->get('query') : ''  }}" class="form-control" placeholder="Search" required>
                     <div class="input-group-btn">
                         <button class="btn btn-primary"><i class="fas fa-search"></i></button>
                     </div>
                     </div>
                 </form>
+                    @endif
                 </div>
             </div>
             <div class="card-body p-0">
                 <div class="table-responsive">
                     <table class="table table-striped">
-                        @if (Auth::user()->is_admin == 1) 
                         <thead>
                             <tr>
                                 <th>Matricule</th>
@@ -39,38 +40,27 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($absences as $absence)
+                            @forelse ($absences as $absence)
                             <tr>
                                 <td>{{$absence['ABS_MAT_95']}}</td>
-                                <td>{{$absence['ABS_MAT_95']}}</td>
+                                <td>{{$absence->user->name}}</td>
                                 <td>{{$absence['ABS_NBRJOUR_93']}}</td>
                                 <td>{{$absence['ABS_DATE_DEB']}}</td>
                                 <td>{{$absence['ABS_PERDEB_X']}}</td>
                                 <td>{{$absence['ABS_DATE_FIN']}}</td>
                                 <td>{{$absence['ABS_PERFIN_X']}}</td>
                             </tr>
-                            @endforeach
+                            @empty
+                                <tr>
+                                    <td>No Records Found</td>
+                                </tr>
+                            @endforelse
 
                         </tbody>
                     </table>
-                    @endif
                     <div class="card-footer text-right">
-                        <nav class="d-inline-block">
-                          <ul class="pagination mb-0">
-                            <li class="page-item disabled">
-                              <a class="page-link" href="#" tabindex="-1"><i class="fas fa-chevron-left"></i></a>
-                            </li>
-                            <li class="page-item active"><a class="page-link" href="#">1 <span class="sr-only">(current)</span></a></li>
-                            <li class="page-item">
-                              <a class="page-link" href="#">2</a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                              <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
-                            </li>
-                          </ul>
-                        </nav>
-                      </div>
+                        @include('stisla-templates::common.paginate', ['records' => $absences])
+                    </div>
                 </div>
             </div>
             </div>

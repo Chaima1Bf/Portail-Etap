@@ -14,7 +14,8 @@ class CreateAbsencesTable extends Migration
     public function up()
     {
         Schema::create('absences', function (Blueprint $table) {
-            $table->integer('ABS_MAT_95')->primary();
+            $table->id();
+            $table->integer('ABS_MAT_95');
             $table->integer('PERS_MAT_95');
             $table->integer('ABS_NUMORD_93');
             $table->integer('ABS_NAT_9');
@@ -25,7 +26,9 @@ class CreateAbsencesTable extends Migration
             $table->enum('ABS_PERFIN_X',['Apres-midi' ,'Matin']);
             $table->integer('ABS_NBRJOUR_93');
             $table->integer('ABS_CUMULE_9');
-            $table->foreign('ABS_NAT_9')->references('CODE_ABS')->on('nat__abs')
+            $table->foreignId('nature_id')->constrained('nat_abs')->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->timestamps();
         });

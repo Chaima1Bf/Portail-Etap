@@ -14,7 +14,8 @@ class CreateNatureAgentsTable extends Migration
     public function up()
     {
         Schema::create('nature_agents', function (Blueprint $table) {
-            $table->integer('NATAG_CODE_93')->primary();
+            $table->id();
+            $table->integer('NATAG_CODE_93');
             $table->string('NATAG_LIB_X50',50);
             $table->timestamps();
         });

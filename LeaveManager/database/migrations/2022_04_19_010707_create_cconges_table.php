@@ -14,7 +14,8 @@ class CreateCcongesTable extends Migration
     public function up()
     {
         Schema::create('cconges', function (Blueprint $table) {
-            $table->integer('CCONG_MAT_95')->primary();
+            $table->id();
+            $table->integer('CCONG_MAT_95');
             $table->integer('CCONG_NAT_9');
             $table->integer('CCONG_CET_9');
             $table->integer('CCONG_DROIT_93');
@@ -23,6 +24,8 @@ class CreateCcongesTable extends Migration
             $table->string('INSERT_USER',35);
             $table->date('UPDATE_DATE');
             $table->string('UPDATE_USER',35);
+            $table->foreignId('conge_id')->constrained()->onUpdate('cascade')
+            ->onDelete('cascade');
             $table->timestamps();
         });
     }

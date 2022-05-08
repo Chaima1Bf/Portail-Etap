@@ -14,7 +14,7 @@ class CreatePersonnelsTable extends Migration
     public function up()
     {
         Schema::create('personnels', function (Blueprint $table) {
-            $table->integer('ID')->primary();
+            $table->id();
             $table->integer('PERS_MAT_95');
             $table->integer('PERS_MAT_ACT');
             $table->integer('PERS_NUMASS_94');

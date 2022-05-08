@@ -1,7 +1,9 @@
 <aside id="sidebar-wrapper">
     <div class="sidebar-brand mt-4">
-        <img style="width: 20%; height: auto;" src="{{URL::to('assets/images/etap2.png')}}" alt="">
-         <a href="{{ url('/') }}">
+        <a href="{{ route('dash') }}">
+            <img style="width: 20%; height: auto;" src="{{URL::to('assets/images/etap2.png')}}" alt="">
+        </a>
+         <a href="{{ route('dash') }}">
             <h6>Portail Etap</h6>
         </a>
     </div>
