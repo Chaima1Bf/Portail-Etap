@@ -51,13 +51,18 @@
                                 <td>{{$absence['ABS_PERFIN_X']}}</td>
                             </tr>
                             @empty
-                                <tr>
-                                    <td>No Records Found</td>
-                                </tr>
+                            <div class="alert alert-warning alert-has-icon">
+                                <div class="alert-icon"><i class="fas fa-exclamation"></i></div>
+                                <div class="alert-body">
+                                  <div class="alert-title">Alerte</div>
+                                   Il n'y aucune absence disponible
+                                </div>
+                              </div>
                             @endforelse
 
                         </tbody>
                     </table>
+                    
                     <div class="card-footer text-right">
                         @include('stisla-templates::common.paginate', ['records' => $absences])
                     </div>

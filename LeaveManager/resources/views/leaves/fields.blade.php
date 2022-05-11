@@ -4,6 +4,12 @@
     {!! Form::select('type', ['Annuel' => 'Annuel', 'Exceptionnel' => 'Exceptionnel', 'Recuperation' => 'Recuperation'], null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- Start Period -->
+<div class="form-group col-sm-4">
+    {!! Form::label('perdeb', 'Période Début:') !!}
+    {!! Form::select('perdeb', ['Matin' => 'Matin', 'Aprés-Midi' => 'Aprés-Midi'], null, ['class' => 'form-control']) !!}
+</div>
+
 @if (Route::is('leaves.create'))
     <!-- Start Date Field -->
     <div class="form-group col-sm-4">
@@ -38,13 +44,19 @@
 
 @endif
 
-
-
-<!-- Reason Field -->
-<div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('reason', 'Motif:') !!}
-    {!! Form::textarea('reason', null, ['class' => 'form-control']) !!}
+<!-- End Period -->
+<div class="form-group col-sm-4">
+    {!! Form::label('perfin', 'Période Fin:') !!}
+    {!! Form::select('perfin', ['Matin' => 'Matin', 'Aprés-Midi' => 'Aprés-Midi'], null, ['class' => 'form-control']) !!}
 </div>
+
+<!-- Address -->
+<div class="form-group col-sm-4">
+    {!! Form::label('address', 'Adresse:') !!}
+    {!! Form::text('address', null, ['class' => 'form-control']) !!}
+</div>
+
+
 
 <!-- Emergency Phone Field -->
 <div class="form-group col-sm-6">
@@ -68,9 +80,15 @@
     {{-- Status Field --}}
     <div class="form-group col-sm-6">
         {!! Form::label('status', 'Statut:') !!}
-        {!! Form::select('status', ['Traitement' => 'Traitement', 'Acceptée' => 'Acceptée', 'Refusée' => 'Refusée'], null, ['class' => 'form-control']) !!}
+        {!! Form::select('status', ['Traitement' => 'Traitement'], null, ['class' => 'form-control']) !!}
     </div>
 @endif
+
+<!-- Reason Field -->
+<div class="form-group col-sm-12 col-lg-12">
+    {!! Form::label('reason', 'Motif:') !!}
+    {!! Form::textarea('reason', null, ['class' => 'form-control']) !!}
+</div>
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
     {!! Form::submit('Sauvegarder', ['class' => 'btn btn-primary']) !!}

@@ -18,6 +18,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $reason
  * @property string $emergency_phone
  * @property string $emergency_email
+ * @property string $address
+ * @property string $perdeb
+ * @property string $perfin
  * @property integer $user_id
  */
 class Leave extends Model
@@ -40,7 +43,12 @@ class Leave extends Model
         'reason',
         'emergency_phone',
         'emergency_email',
-        'user_id'
+        'address',
+        'perdeb',
+        'perfin',
+        'user_id',
+
+
     ];
 
     /**
@@ -56,6 +64,9 @@ class Leave extends Model
         'reason' => 'string',
         'emergency_phone' => 'string',
         'emergency_email' => 'string',
+        'address' => 'string',
+        'perdeb' => 'string',
+        'perfin' => 'string',
         'user_id' => 'integer'
     ];
 
@@ -72,6 +83,9 @@ class Leave extends Model
         'reason' => 'required|string',
         'emergency_phone' => 'nullable|string',
         'emergency_email' => 'nullable|email',
+        'address' => 'required|string',
+        'perdeb' => 'required|string|in:Matin,Aprés-Midi',
+        'perfin' => 'required|string|in:Matin,Aprés-Midi',
         'user_id' => 'required'
     ];
 

@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.3|^8.0",
         "arielmejiadev/larapex-charts": "^4.0",
+        "barryvdh/laravel-dompdf": "^1.0",
         "consoletvs/charts": "7.*",
         "doctrine/dbal": "^3.3",
         "fideloper/proxy": "^4.4",

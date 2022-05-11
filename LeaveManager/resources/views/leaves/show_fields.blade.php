@@ -2,7 +2,7 @@
 <!-- Type Field -->
 <div class="form-group">
     {!! Form::label('type', 'Type:') !!}
-    <p>{{ $leave->type }}</p>
+    <p>{{ $leave->type }} </p>
 </div>
 
 <!-- Start Date Field -->

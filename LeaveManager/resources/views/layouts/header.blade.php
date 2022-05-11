@@ -6,9 +6,11 @@
 <ul class="navbar-nav navbar-right">
 
     @if(\Illuminate\Support\Facades\Auth::user())
+    <a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg beep"><i class="far fa-bell"></i></a>
         <li class="dropdown">
             <a href="#" data-toggle="dropdown"
                class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+               <img alt="image" src="" class="rounded-circle mr-1">
                 <div class="d-sm-none d-lg-inline-block">
                     {{\Illuminate\Support\Facades\Auth::user()->name}}
                 </div>

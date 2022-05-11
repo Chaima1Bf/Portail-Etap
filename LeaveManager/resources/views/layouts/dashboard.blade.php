@@ -26,7 +26,7 @@
 
             <div class="col-5 col-sm-7 col-xl-8 p-4">
               <h4 class="mb-1 mb-sm-0">Bienvenu dans ton dashboard, {{Auth::user()->name}} </h4>
-              <p class="mb-0 font-weight-normal d-none d-sm-block" style="font-size: 17px">vérifier les nouveautés depuis votre dernière visite.</p>
+              <p class="mb-0 font-weight-normal d-none d-sm-block" style="font-size: 17px">Vérifier les nouveautés depuis votre dernière visite.</p>
             </div>
             <div class="col-4 col-sm-3 col-xl-2">
               <img src="{{URL::to('assets/images/OnPc.png')}}" class="gradient-corona-img img-fluid" style="margin-left: 120px;" alt="">

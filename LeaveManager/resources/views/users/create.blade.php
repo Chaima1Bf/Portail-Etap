@@ -5,7 +5,7 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1 class="page__heading m-0">Ajouter un utilisateur</h1>
+            <h1 class="page__heading m-0">Ajouter un employé</h1>
             <div class="filter-container section-header-breadcrumb row justify-content-md-end">
                 <a href="{{ route('users.index') }}" class="btn btn-primary">Retour</a>
             </div>

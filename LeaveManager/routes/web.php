@@ -10,7 +10,7 @@ use App\Http\Controllers\DashboardController;
  **/
 Route::middleware(['auth'])->group(function () {
     Route::resource('users', App\Http\Controllers\UserController::class)->middleware('admin');
-    Route::get('/dash', [App\Http\Controllers\DashboardController::class, 'index'])->name('dash');
+    Route::get('/', [App\Http\Controllers\DashboardController::class, 'index'])->name('dash');
     Route::resource('leaves', App\Http\Controllers\LeaveController::class);
     Route::get('absence', [AbsenceController::class, 'show'])->name('absence');
     Route::get('absence_search', [AbsenceController::class, 'search'])->name('absence.search');

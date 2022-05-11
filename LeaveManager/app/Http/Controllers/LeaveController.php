@@ -12,6 +12,10 @@ use Illuminate\Http\Request;
 use Laracasts\Flash\Flash;
 use Response;
 
+use PDF;
+use Illuminate\Support\Facades\Storage;
+
+
 class LeaveController extends AppBaseController
 {
     /**
@@ -60,9 +64,43 @@ class LeaveController extends AppBaseController
         if (!auth()->user()->is_admin == 1) {
             $input += ['user_id' => auth()->id()];
         }
+        
 
-        /** @var Leave $leave */
-        Leave::create($input);
+    //   dd($input);
+          
+   //     $pdf = Pdf::loadView('pdf');
+    
+   $pdf = PDF::loadView('pdf',[
+    'natureconge' => $request->input('type'),
+    'matricule' => $request->input('user_id'),
+    'debut' => $request->input('start_date'),
+    'fin' => $request->input('end_date'),
+    'adresse' => $request->input('emergency_email'),
+    'address' => $request->input('address'),
+    'tel' => $request->input('emergency_phone'),
+
+]);
+
+$filename = '-'.rand() .'_'.time(). '.'.'pdf';
+        
+        Storage::put('public/storage/'.$filename,$pdf->output());
+
+        $Leave = new Leave;
+        $Leave->type = $request['type'];
+        $Leave->start_date = $request['start_date'];
+        $Leave->end_date = $request['end_date'];
+        $Leave->reason = $request['reason'];
+        $Leave->emergency_phone = $request['emergency_phone'];
+        $Leave->emergency_email = $request['emergency_email'];
+        $Leave->user_id = $request['user_id'];
+        $Leave->status = $request['status'];
+        $Leave->address = $request['address'];
+        $Leave->perdeb = $request['perdeb'];
+        $Leave->perfin = $request['perfin'];
+        $Leave->pdf = $request->input('pdf', $filename);
+        $Leave->save();
+
+
 
         Flash::success('Demande soumise avec succès.');
 

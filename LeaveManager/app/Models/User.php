@@ -14,6 +14,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @version January 25, 2022, 10:02 pm UTC
  *
  * @property string $name
+ * @property string $matricule
+ * @property string $gender
  * @property string $email
  * @property string|\Carbon\Carbon $email_verified_at
  * @property boolean $is_admin
@@ -39,6 +41,8 @@ class User extends Authenticatable
 
     public $fillable = [
         'name',
+        'matricule',
+        'gender',
         'email',
         'email_verified_at',
         'is_admin',
@@ -56,6 +60,8 @@ class User extends Authenticatable
     protected $casts = [
         'id' => 'integer',
         'name' => 'string',
+        'matricule' => 'integer',
+        'gender' => 'string',
         'email' => 'string',
         'email_verified_at' => 'datetime',
         'is_admin' => 'boolean',
@@ -72,6 +78,8 @@ class User extends Authenticatable
      */
     public static $rules = [
         'name' => 'required|string|max:255',
+        'matricule' => 'nullable|string|size:7|unique:users,matricule',
+        'gender' => 'required|string|in:Female,Male',
         'email' => 'required|email|unique:users,email',
         'email_verified_at' => 'nullable',
         'is_admin' => 'nullable|boolean',

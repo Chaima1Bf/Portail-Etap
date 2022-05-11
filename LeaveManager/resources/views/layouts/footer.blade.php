@@ -1,3 +1,5 @@
 <div class="footer-left">
-    Systeme Gestion De Congé
+    <div class="footer-left">
+        Copyright © 2022 <div class="bullet"></div> Created By <a href="">C&C</a>
+      </div>
 </div>
