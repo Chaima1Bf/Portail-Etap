@@ -30,5 +30,5 @@
 </li>
 
 <li class="side-menus {{ Request::is('badge*') ? 'active' : '' }} ">
-    <a class="nav-link" href=""><i class="fas fa-id-badge"></i><span>Badges</span></a>
+    <a class="nav-link" href="{{ route('badge') }}"><i class="fas fa-id-badge"></i><span>Badges</span></a>
 </li>

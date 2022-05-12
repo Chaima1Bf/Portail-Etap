@@ -39,14 +39,19 @@
 
                         @endswitch
                     </td>
-                    <td class=" text-center">
+
+                    <td><a class="btn btn-sm btn-primary"
+                        href="{{ asset('storage/demandes/' . $leave->pdf) }}"
+                        target="_blank"><i class="fa fa-fw fa-file-pdf"></i> </a>
+                </td>
+                    {{-- <td class=" text-center">
                         {!! Form::open(['route' => ['leaves.destroy', $leave->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>
                             <a class="btn btn-sm btn-primary"
                                 href="{{}}" target="_blank"><i
                                     class="fa fa-fw fa-file-pdf" ></i></a>
 
-                            {{--   asset("../storage/app/public/storage/-245891337_1652205829.pdf")  
+                            {{--   asset("/storage/app/public/storage/245891337_1652205829.pdf")  
                                  <a href="{!! route('leaves.show', [$leave->id]) !!}" class='btn btn-light action-btn '><i
                                     class="fa fa-eye"></i></a> --}}
                           {{--   <a href="{!! route('leaves.edit', [$leave->id]) !!}" class='btn btn-warning action-btn edit-btn'><i
@@ -56,7 +61,7 @@
                             @endif --}}
                         </div>
                         {!! Form::close() !!}
-                    </td>
+                    {{-- </td> --}}
                 </tr>
             @endforeach
         </tbody>

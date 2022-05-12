@@ -22,6 +22,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property string $birth_date
  * @property string $cin
  * @property string $password
+ * @property string $avatar
  * @property string $remember_token
  */
 class User extends Authenticatable
@@ -49,6 +50,7 @@ class User extends Authenticatable
         'birth_date',
         'cin',
         'password',
+        'avatar',
         'remember_token'
     ];
 
@@ -68,6 +70,7 @@ class User extends Authenticatable
         'birth_date' => 'date',
         'cin' => 'string',
         'password' => 'string',
+        'avatar' => 'string',
         'remember_token' => 'string'
     ];
 
@@ -87,6 +90,7 @@ class User extends Authenticatable
         'cin' => 'required|string|size:8|unique:users,cin',
         'password' => 'required|string|max:255',
         'remember_token' => 'nullable|string|max:100',
+        'avatar' => 'string',
         'created_at' => 'nullable',
         'updated_at' => 'nullable'
     ];

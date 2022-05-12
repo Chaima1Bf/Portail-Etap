@@ -23,7 +23,7 @@
 
 
     @yield('css')
-
+    @livewireStyles
     
 </head>
 <body>
@@ -61,7 +61,7 @@
 <script src="{{ asset('assets/js/jquery.nicescroll.js') }}"></script>
 
 <!-- Template JS File -->
-
+@livewireScripts
 <script src="{{ asset('web/js/stisla.js') }}"></script>
 <script src="{{ asset('web/js/scripts.js') }}"></script>
 <script src="{{ mix('assets/js/profile.js') }}"></script>

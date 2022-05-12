@@ -19,7 +19,7 @@
                            <div class="card-body ">
                                 {!! Form::open(['route' => 'users.store']) !!}
                                     <div class="row">
-                                        @include('users.fields')
+                                        @livewire('multi-step-user')
                                     </div>
                                 {!! Form::close() !!}
                            </div>

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AbsenceController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\BadgeController;
 
 
 /**
@@ -16,6 +17,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('absence_search', [AbsenceController::class, 'search'])->name('absence.search');
     Route::view('/event', 'layouts.calendar')->name('event');
     Route::view('/pointage', 'layouts.pointage')->name('pointage');
+    Route::view('/badge', 'badges.badge')->name('badge');
+    Route::post('saveBadge', [BadgeController::class, 'save'] )->name('saveBadge');
+
     
 });
 

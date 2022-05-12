@@ -83,7 +83,7 @@ class LeaveController extends AppBaseController
 
 $filename = '-'.rand() .'_'.time(). '.'.'pdf';
         
-        Storage::put('public/storage/'.$filename,$pdf->output());
+        Storage::put('public/demandes/'.$filename,$pdf->output());
 
         $Leave = new Leave;
         $Leave->type = $request['type'];
