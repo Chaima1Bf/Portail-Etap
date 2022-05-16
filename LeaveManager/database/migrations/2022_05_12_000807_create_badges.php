@@ -18,6 +18,7 @@ class CreateBadges extends Migration
             $table->string('full_name');
             $table->string('fonction');
             $table->string('photo');
+            $table->string('pdf')->nullable();
             $table->timestamps();
         });
     }

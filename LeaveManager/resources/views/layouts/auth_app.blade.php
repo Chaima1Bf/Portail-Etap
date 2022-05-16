@@ -24,7 +24,7 @@
             <div class="row">
                 <div class="col-md-6 offset-md-3">
                     <div class="login-brand text-center">
-                        <h3>Portail ETAP</h3>
+                        <!-- <h3>Portail ETAP</h3> -->
                     </div>
                     @yield('content')
                     <div class="simple-footer">

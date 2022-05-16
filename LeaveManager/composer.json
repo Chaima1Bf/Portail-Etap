@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "ext-gd": "*",
         "arielmejiadev/larapex-charts": "^4.0",
         "barryvdh/laravel-dompdf": "^1.0",
         "consoletvs/charts": "7.*",
@@ -23,6 +24,7 @@
         "laravel/tinker": "^2.5",
         "laravelcollective/html": "^6.2",
         "livewire/livewire": "^2.10",
+        "simplesoftwareio/simple-qrcode": "~4",
         "tightenco/ziggy": "^1.4",
         "yajra/laravel-datatables-oracle": "~9.0"
     },

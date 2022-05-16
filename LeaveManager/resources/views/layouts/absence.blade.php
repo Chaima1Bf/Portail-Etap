@@ -7,6 +7,10 @@
     <section class="section">
         <div class="section-header">
             <h1>Liste des Abscences</h1>
+            <div class="section-header-breadcrumb">
+                <a href="" class="btn btn-primary form-btn"> Importer <i
+                        class="fas fa-file-import"></i></a>
+            </div>
           </div>
         <div class="col-12">
             <div class="card">
