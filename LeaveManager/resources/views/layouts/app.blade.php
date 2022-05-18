@@ -68,6 +68,7 @@
 <script src="{{ mix('assets/js/custom/custom.js') }}"></script>
 @yield('page_js')
 @yield('scripts')
+
 @yield('chartscripts')
 <script>
     let loggedInUser =@json(\Illuminate\Support\Facades\Auth::user());
