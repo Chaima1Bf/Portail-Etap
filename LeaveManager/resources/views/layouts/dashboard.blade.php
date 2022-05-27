@@ -74,10 +74,10 @@
           </div>
           <div class="card-wrap">
             <div class="card-header">
-              <h4>Reports</h4>
+              <h4>Nb Demande Congé</h4>
             </div>
             <div class="card-body">
-              1,201
+              {{$absence}}
             </div>
           </div>
         </div>
@@ -104,7 +104,7 @@
       <div class="col-lg-8 col-md-12 col-12 col-sm-12">
         <div class="card">
           <div class="card-header">
-            <h4>Statistics</h4>
+            <h4>Statistiques</h4>
             <div class="card-header-action">
               <div class="btn-group">
                 <a href="#" class="btn btn-primary">Week</a>
@@ -116,24 +116,19 @@
             <canvas id="myChart" height="296" style="display: block; width: 488px; height: 296px;" width="488" class="chartjs-render-monitor"></canvas>
             <div class="statistic-details mt-sm-4">
               <div class="statistic-details-item">
-                <span class="text-muted"><span class="text-primary"><i class="fas fa-caret-up"></i></span> 7%</span>
-                <div class="detail-value">$243</div>
-                <div class="detail-name">Today's Sales</div>
+                
+                <div class="detail-value">58.5%</div>
+                <div class="detail-name">Cadres</div>
               </div>
               <div class="statistic-details-item">
-                <span class="text-muted"><span class="text-danger"><i class="fas fa-caret-down"></i></span> 23%</span>
-                <div class="detail-value">$2,902</div>
-                <div class="detail-name">This Week's Sales</div>
+                
+                <div class="detail-value">24.25%</div>
+                <div class="detail-name">Agents de maitrise</div>
               </div>
               <div class="statistic-details-item">
-                <span class="text-muted"><span class="text-primary"><i class="fas fa-caret-up"></i></span>9%</span>
-                <div class="detail-value">$12,821</div>
-                <div class="detail-name">This Month's Sales</div>
-              </div>
-              <div class="statistic-details-item">
-                <span class="text-muted"><span class="text-primary"><i class="fas fa-caret-up"></i></span> 19%</span>
-                <div class="detail-value">$92,142</div>
-                <div class="detail-name">This Year's Sales</div>
+                
+                <div class="detail-value">17.25%</div>
+                <div class="detail-name">Agents d excecution</div>
               </div>
             </div>
           </div>
@@ -175,21 +170,59 @@
     </div>
 
 
-
-
+<div class="row">
       <!-- Pie Chart -->
       <div class="col-12 col-md-6 col-lg-6">
         <div class="card">
-          <div class="card-header">
-            <h4>Pie Chart</h4>
-          </div>
+        
           <div class="card-body"><div class="chartjs-size-monitor" style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
-            <canvas id="myChart4" style="display: block; width: 329px; height: 164px;" width="329" height="164" class="chartjs-render-monitor"></canvas>
+            {{-- <canvas id="myChart4" style="display: block; width: 329px; height: 164px;" width="329" height="164" class="chartjs-render-monitor"></canvas> --}}
+            {!! $usersByGenderChart->container()  !!}
           </div>
         </div>
       </div>
 
+      
+   
+          
 
+            <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+            
+            <canvas id="myChart" width="400" height="400"></canvas>
+            
+            <script>
+                var ctx = document.getElementById('myChart').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'bar',
+                            data: {
+                                labels: ['Cadres', 'Agents de maitrise', 'Agents d excecution'],
+                                datasets: [{
+                                label: 'Répartition des effectifs par categories en %',
+                                data: [58.5, 24.25, 17.25],
+                                backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(255, 159, 64, 0.2)',
+                                'rgba(54, 162, 235, 0.2)'
+                            ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(255, 159, 64, 1)',
+                            'rgba(54, 162, 235, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+            </script>
 
     </section>
 
@@ -387,8 +420,8 @@
 
 
    </style>
-
-
+  <script src="{{ $usersByGenderChart->cdn()}}"></script>
+   {{ $usersByGenderChart->script() }}
    <script>
       /* Submit on Enter */
       $("#addNewItemInput").on("keydown", (e) => {
@@ -397,7 +430,6 @@
           $("#addNewItemInput").val("")
         }
       })
-
       $("#titleInput").on("keydown", (e) => {
         if (e.keyCode == 13) {
           $("#titleInput").blur();
@@ -523,7 +555,7 @@
       })
    </script>
 @endsection
-
+{{-- 
 @section('chartscripts')
     <script 
         src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js">
@@ -536,4 +568,4 @@
         config
       );
     </script>
-@endsection
+@endsection --}}

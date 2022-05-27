@@ -11,7 +11,9 @@
                 <th>Téléphone d'urgence</th>
                 <th>Email d'urgence</th>
                 <th>Statut</th>
+                <th >Signataire</th>
                 <th colspan="3">PDF</th>
+                
             </tr>
         </thead>
         <tbody>
@@ -40,10 +42,19 @@
                         @endswitch
                     </td>
 
-                    <td><a class="btn btn-sm btn-primary"
+                    <td>
+                        <a class="btn btn-sm btn-primary"
+                       href="{{  route('ajouterSignataire', ['id' => $leave->id])  }}"
+                       target="_blank"><i class="fa fa-signature"></i> </a>
+                   </td>
+
+                    <td>
+                        <a class="btn btn-sm btn-primary"
                         href="{{ asset('storage/demandes/' . $leave->pdf) }}"
                         target="_blank"><i class="fa fa-fw fa-file-pdf"></i> </a>
-                </td>
+                     </td>
+
+
                     {{-- <td class=" text-center">
                         {!! Form::open(['route' => ['leaves.destroy', $leave->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>

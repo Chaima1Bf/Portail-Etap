@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Charts\UsersByGender;
 use Illuminate\Http\Request;
 use App\Models\Personnel;
 use App\Models\Absence;
@@ -11,7 +12,7 @@ use Illuminate\Foundation\Auth\User;
 
 class DashboardController extends Controller
 {
-    public function index()
+    public function index(UsersByGender $usersByGenderChart)
     {
         $personnels = User::count();
         if (Auth::user()->is_admin==true){
@@ -20,6 +21,8 @@ class DashboardController extends Controller
         else {
             $absence = Absence::where('user_id',auth()->id())->count();
         }
-        return view('layouts.dashboard', compact('personnels', 'absence'));
+        $usersByGenderChart = $usersByGenderChart->build();
+        
+        return view('layouts.dashboard', compact('personnels', 'absence' , 'usersByGenderChart'));
     }
 }

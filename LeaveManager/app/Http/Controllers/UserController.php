@@ -21,11 +21,12 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        /** @var User $users */
-        $users = User::withCount('leaves')->paginate(10);
-
+        
+        //$users = User::withCount('users')->paginate(10);
+        $users = User::paginate(10);
         return view('users.index')
             ->with('users', $users);
+            
     }
 
     /**

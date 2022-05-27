@@ -49,9 +49,9 @@
             <div class="modal-body">
                 <div class="wrapper">
                     <div class="left">
-                        <img src="" alt="user" width="100">
+                        <img src="{{URL::to('assets/images/av2.png')}}" alt="user" width="100">
                         <h4>{{\Illuminate\Support\Facades\Auth::user()->name}}</h4>
-                         <p>UI Developer</p>
+                         <p>Département Informatique</p>
                     </div>
                     <div class="right">
                         <div class="info">
@@ -63,7 +63,7 @@
                                  </div>
                                  <div class="data">
                                    <h4>Numéro De Telephone</h4>
-                                    <p>0001-213-998761</p>
+                                    <p>27272727</p>
                               </div>
                             </div>
                         </div>
@@ -84,10 +84,10 @@
                         </div>
 
                         <div class="social_media">
-                            <ul>
-                              <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                              <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                              <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                            <ul style="list-style-type: none;">
+                              <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
+                              <li><a href=""><i class="fab fa-twitter"></i></a></li>
+                              <li><a href=""><i class="fab fa-instagram"></i></a></li>
                           </ul>
                       </div>
                     </div>

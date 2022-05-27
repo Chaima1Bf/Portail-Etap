@@ -2,6 +2,10 @@
     <a class="nav-link" href="{{ route('dash') }}"><i class="fas fa-fire"></i><span>Dashboard</span></a>
 </li>
 
+<li class="side-menus {{ Request::is('details*') ? 'active' : '' }} ">
+    <a class="nav-link" href="{{ route('details') }}"><i class="fas fa-user"></i><span>Profil</span></a>
+</li>
+
 <li class="side-menus {{ Request::is('pointage*') ? 'active' : '' }} ">
     <a class="nav-link" href="{{ route('pointage') }}"><i class="fas fa-check-double"></i><span>Pointage</span></a>
 </li>

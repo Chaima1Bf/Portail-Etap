@@ -7,10 +7,14 @@ use App\Http\Requests\CreateLeaveRequest;
 use App\Http\Requests\UpdateLeaveRequest;
 use App\Models\Leave;
 use App\Models\User;
+use App\Models\Signataire;
 use Auth;
+use Barryvdh\Debugbar\Facade;
 use Illuminate\Http\Request;
 use Laracasts\Flash\Flash;
 use Response;
+use Illuminate\Support\Facades\DB;
+
 
 use PDF;
 use Illuminate\Support\Facades\Storage;
@@ -182,4 +186,84 @@ $filename = '-'.rand() .'_'.time(). '.'.'pdf';
 
         return redirect(route('leaves.index'));
     }
+
+
+
+
+        //signers functions
+
+    public function ajouterSignataire($id)
+    {
+        if (Auth::user()->is_admin == 1) {
+            $demandeur = Leave::where('id', $id)->first();
+            //dd($demandeur->id);
+           // $EMAIL_DEMANDEUR = User::select('email')->where('id', $demandeur->user_id)->get();
+            //dd($EMAIL_DEMANDEUR[0]->email);
+            //dd($demandeur);
+            $Emails = User::select('email')->whereNotNull('email')->get();
+           // dd($Emails);
+           // dd($Emails[1]->email);
+            $ListeSignataire = Signataire::where('pers_id', $demandeur->user_id)->get();
+            //dd($ListeSignataire);
+            //dd($ListeSignataire[6]->id);
+            //$ListeTypefonction=
+            return view('layouts.ajoutersignataire', compact('demandeur', 'Emails', 'ListeSignataire'));
+        }
+        abort(404);
+    }
+
+    public function storeSignataire(Request $request, $id)
+    {
+        if (Auth::user()->is_admin == 1) {
+            $TestSignataire = Signataire::where('pers_id', $id)->get();
+
+            // dd($TestSignataire);
+            if ($TestSignataire->isEmpty()) {
+
+
+
+                $request->validate(
+                    [
+                        'emails' => 'required|array|min:1|exists:Users,email',
+                    ],
+                    [
+                        //'date_deb.required' => 'Le champ date debut est obligatoire.',
+                    ]
+                );
+                //dd($request->emails);
+                $tab = $request->emails;
+                dd($tab);
+
+                //dd($id_personnel);
+
+
+                for ($i = 1; $i <= count($tab); $i++) {
+                    //echo(gettype($id_personnel));
+
+
+                    $x = $tab[$i - 1];
+                    //echo($x); user id w email
+                    // echo("<br>");
+                    $signataire = DB::select("select Users.id from users where users.email='$x' ");
+                    //dd($signataire[]->PERS_MAT_95 ?? null);
+                    $signataire_id = $signataire[0]->user_id;
+                    //dd($tab);
+                    // echo($signataire[0]->PERS_MAT_95);
+                    //var_dump($signataire[$var]->PERS_MAT_95);
+                    //$signataire_id=$signataire[$var]->PERS_MAT_95
+                    DB::insert("insert into signataires ( pers_id , signataire_id , orderr ) values ( '$id','$signataire_id','$i')");
+                }
+
+                //dd(((int)($request->Id_personnel)));
+
+                return redirect()->back()   
+                    ->with('success', 'vous avez ajouté une liste de signataires avec succès.');
+            } else {
+                return redirect()->back()->with('failedSignataire', 'liste des signataire existe déja');
+            }
+        }
+        abort(404);
+    }
+
+
 }

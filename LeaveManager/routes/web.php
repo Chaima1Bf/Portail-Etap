@@ -1,10 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BadgeController;
+use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\AbsenceController;
 use App\Http\Controllers\PointageController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\BadgeController;
+use App\Http\Controllers\NgSignServiceController;
 
 
 /**
@@ -28,11 +30,16 @@ Route::middleware(['auth'])->group(function () {
     Route::post('saveBadge', [BadgeController::class, 'save'] )->name('saveBadge');
     Route::view('/pivot', 'layouts.pivottable');
 
+    Route::get('/ajouterSigs/{id}',['as'=>'ajouterSignataire','uses'=>'App\Http\Controllers\LeaveController@ajouterSignataire'])->middleware('auth');
+    Route::post('/ajouterSignataire/{id}', 'App\Http\Controllers\LeaveController@storeSignataire')->name('storeSig')->middleware('auth');
+    
+
+    
     
 });
 
 
-
+Route::get('/transaction', [NgSignServiceController::class, 'getTransaction']);
 
 
 Auth::routes(['register' => false]);
